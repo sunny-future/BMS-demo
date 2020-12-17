@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+</head>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4  col-md-offset-3">
+            <form action="/book/update_book/{{ upd_book.pk }}" method="post">
+                  <div class="form-group" >
+                      <label for="title">书籍名</label>
+                      <input type="text" class="form-control" id="title" placeholder="title" name="title" value="{{ upd_book.title }}">
+                  </div>
+                    <div class="form-group">
+                        <label for="price">价格</label>
+                        <input type="text" class="form-control" id="price" placeholder="price" name="price" value="{{ upd_book.price }}">
+                  </div>
+                    <div class="form-group">
+                        <label for="pub_date">出版时间</label>
+                        <input type="date" class="form-control" id="pub_date" placeholder="pub_date" name="pub_date" value="{{ upd_book.pub_date|date:'Y-m-d' }}">
+                  </div>
+
+                <div class="form-group" >
+                     <label for="publish">出版社</label>
+                        <select name="publisher_id" id="publish" class="form-control">
+                            {% for pub in publish_list %}
+                                {% if  pub == upd_book.publisher %}
+                                     <option selected value="{{ pub.pk }}">{{ pub.name }}</option>
+                                {% else %}
+                                     <option value="{{ pub.pk }}">{{ pub.name }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                </div>
+
+                <div class="form-group "  >
+                 <label for="author">作者</label>
+                    <p>
+                        {% for ath in author_list %}
+                            {% if ath in  upd_book.authors.all %}
+                                <input checked type="checkbox" name="author_ids" value="{{ ath.pk }}" placeholder="" >{{ ath.name }}
+                            {% else %}
+                                <input type="checkbox" name="author_ids" value="{{ ath.pk }}" placeholder="" >{{ ath.name }}
+                            {% endif %}
+                        {% endfor %}
+                    </p>
+                </div>
+                    <button type="submit" class="btn btn-sm btn-success pull-right">Submit</button>
+</form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

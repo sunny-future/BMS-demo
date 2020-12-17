@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4  col-md-offset-3">
+{#            <form action="/books/add_books/" method="post">#}
+            <form action="/book/add_publish/" method="post">
+                  <div class="form-group" >
+                      <label for="name">出版社名称</label>
+                      <input type="text" class="form-control" id="name" placeholder="name" name="name">
+                  </div>
+                    <div class="form-group">
+                        <label for="city">城市</label>
+                        <input type="text" class="form-control" id="city" placeholder="city" name="city">
+                  </div>
+                    <div class="form-group">
+                        <label for="email">邮箱</label>
+                        <input type="email" class="form-control" id="email" placeholder="email" name="email">
+                  </div>
+                    <button type="submit" class="btn btn-sm btn-success pull-right">Submit</button>
+</form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

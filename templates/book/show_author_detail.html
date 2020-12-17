@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
+<h3>查询所有作者详细信息</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <a href="/book/add_author_detail/" class="btn btn-primary">添加作者详细信息</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>地址</th>
+                <th>生辰</th>
+                <th>电话</th>
+                <th>爱好</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%  for author_detail in author_detail_list  %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ author_detail.addr }}</td>
+                <td>{{ author_detail.birthday|date:"Y-m-d" }}</td>
+                <td>{{ author_detail.telephone }}</td>
+                <td>{{ author_detail.hobby }}</td>
+                <td>
+                   <a href="/book/update_author_detail/{{ author_detail.pk }}" class="btn-sm btn-warning">编辑</a>
+                   <a href="/book/delete_author_detail/{{ author_detail.pk }}" class="btn-sm btn-danger">删除</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        </div>
+    </div>
+</div>
+
+<p>
+    <a href="/">管理所有书籍</a>
+</p>
+<p><a href="/book/show_publish/">管理所有出版社</a>
+</p>
+<p><a href="/book/show_author/">管理所有作者</a></p>
+
+<p><a href="/book/show_author_detail/">管理所有作者详细信息</a>
+</p>
+</body>
+</html>
