@@ -31,7 +31,7 @@
 
                 <div class="form-group" >
                      <label for="publish">出版社</label>
-                        <select name="publisher_id" id="publish" class="form-control">
+                        <select name="publish_id" id="publish" class="form-control">
                             {% for pub in publish_list %}
                                 {% if  pub == upd_book.publisher %}
                                      <option selected value="{{ pub.pk }}">{{ pub.name }}</option>

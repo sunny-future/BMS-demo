@@ -41,6 +41,9 @@ class Book(models.Model):
     pub_date = models.DateTimeField()
     price = models.DecimalField(max_digits=9, decimal_places=2)  # 9999999.99
 
+    keep_nums = models.IntegerField(default=0)      # 收藏数
+    comment_nums = models.IntegerField(default=0)   # 评论数
+
     # 与Publish建立一对多的关系,外键字段ForeignKey会生成publisher_id建立在多的一方
     # publish = models.ForeignKey(to="Publish", to_field="pk", on_delete=models.CASCADE)  # 级联删除
     publish = models.ForeignKey(to="Publish", on_delete=models.CASCADE)  # 级联删除

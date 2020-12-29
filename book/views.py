@@ -180,4 +180,5 @@ def update_author_detail(request, id_author_detail):
         return redirect('/book/show_author_detail/')
 
 
-
+def e_chart_index(request):
+    return render(request, 'book/liquid.html')

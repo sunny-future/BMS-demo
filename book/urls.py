@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from book import views
+from book import views, sub_query, join_query, fq_query
 
 urlpatterns = [
     path('index/', views.index),
@@ -19,5 +19,9 @@ urlpatterns = [
     re_path(r'^add_author_detail/$', views.add_author_detail),
     re_path(r'^delete_author_detail/(?P<id_author_detail>\d+)$', views.delete_author_detail),
     re_path(r'^update_author_detail/(?P<id_author_detail>\d+)$', views.update_author_detail),
-    
+    re_path(r'^e_chart/index/$', views.e_chart_index),
+    re_path(r'^sub_query/$', sub_query.sub_query),
+    re_path(r'^join_query/$', join_query.join_query),
+    re_path(r'^fq_query/$', fq_query.fq_query),
+
 ]
